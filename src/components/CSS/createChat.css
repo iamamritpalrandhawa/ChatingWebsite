@@ -1,0 +1,39 @@
+.modal {
+    /* display: none; */
+    position: fixed;
+    z-index: 1;
+    left: -36px;
+    top: -139px;
+    overflow: hidden;
+    background-color: rgba(86, 104, 128, 0.5);
+    width: 373px;
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 4px;
+    width: 300px;
+    color: black;
+}
+
+.close {
+    color: #314660;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.modal-content h2 {
+    display: flex;
+    color: #27384e;
+}
