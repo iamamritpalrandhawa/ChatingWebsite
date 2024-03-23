@@ -14,8 +14,8 @@ import { useEffect } from "react";
 
 // import SocketState from "./Context/Socket/SocketState";
 
-// const socket = io.connect("http://localhost:5000");
-const socket = io.connect("https://boting-chat-4bac28e35f1f.herokuapp.com/");
+const socket = io.connect("http://localhost:5000");
+// const socket = io.connect("https://boting-chat-4bac28e35f1f.herokuapp.com/");
 
 function App() {
   socket.on("USERID", (id) => {
@@ -55,9 +55,9 @@ function App() {
               <>
                 <JoinChat
                   socket={socket}
-                  // setRoom={setRoom}
-                  // joinRoom={joinRoom}
-                  // setUsername={setUsername}
+                // setRoom={setRoom}
+                // joinRoom={joinRoom}
+                // setUsername={setUsername}
                 />
               </>
             }></Route>
@@ -76,8 +76,8 @@ function App() {
                 <ChatPage
                   logo={logo}
                   socket={socket}
-                  // username={username}
-                  // room={room}
+                // username={username}
+                // room={room}
                 />
               </>
             }></Route>

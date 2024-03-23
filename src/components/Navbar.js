@@ -15,11 +15,11 @@ function Navbar(props) {
               <h2>BoTing Chat App</h2>
             </div>
           </div>
-          <div className="header-button">
+          {/* <div className="header-button">
             <Link to="/joinchat">
               <button className="bttn">Join Chat</button>
             </Link>
-          </div>
+          </div> */}
         </header>
       </div>
     </>

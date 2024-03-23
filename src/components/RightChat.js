@@ -1,5 +1,6 @@
 import React, { useEffect, useState, useRef } from "react";
 import SongSearchResult from "./SongSearchResult";
+import Picker from 'emoji-picker-react';
 
 function RightChat({ logo, socket, username, userid, room, color }) {
   const [currentMessage, setCurrentMessage] = useState("");
@@ -64,12 +65,41 @@ function RightChat({ logo, socket, username, userid, room, color }) {
     }
   }, [messageList]);
 
+  const handleUser = () => {
+    if (document.getElementsByClassName("leftbottomcontainer")[0].style.display === "block") {
+      document.getElementsByClassName("leftbottomcontainer")[0].style.display = "none"
+    }
+    else {
+      document.getElementsByClassName("lefttopcontainer")[0].style.display = "none"
+      document.getElementsByClassName("leftbottomcontainer")[0].style.display = "block"
+    }
+  }
+  const handleInfo = () => {
+    if (document.getElementsByClassName("lefttopcontainer")[0].style.display === "block") {
+      document.getElementsByClassName("lefttopcontainer")[0].style.display = "none"
+    }
+    else {
+      document.getElementsByClassName("leftbottomcontainer")[0].style.display = "none"
+      document.getElementsByClassName("lefttopcontainer")[0].style.display = "block"
+    }
+  }
+  const [chosenEmoji, setChosenEmoji] = useState(null);
+
+  const onEmojiClick = (event, emojiObject) => {
+    setChosenEmoji(emojiObject);
+    setCurrentMessage(currentMessage + event.emoji)
+  };
+  const [showemoji, setShowemoji] = useState(false)
+  const handleEmoji = () => {
+    setShowemoji(!showemoji)
+  }
+
   return (
     <>
       <div className="rightcontainer">
         <div className="righttopcontainer">
           <div className="containera">
-            <div className="logo-name-div">
+            <div className="logo-name-div" id="logo">
               <div className="logo">
                 <img src={logo} alt="" />
               </div>
@@ -86,6 +116,15 @@ function RightChat({ logo, socket, username, userid, room, color }) {
               </div>
               <h3>{username}</h3>
             </div>
+            <div className="" id="info">
+              <span onClick={handleUser}>
+                <i className="fa-solid fa-users"></i>
+              </span>
+              <span onClick={handleInfo}>
+                <i className="fas fa-info-circle"></i>
+              </span>
+            </div>
+
           </div>
         </div>
         <div className="rightcentercontainer">
@@ -99,7 +138,7 @@ function RightChat({ logo, socket, username, userid, room, color }) {
                     localStorage.getItem("key") === messageContent.userid
                       ? "right"
                       : "left"
-                  }`}>
+                    }`}>
                   <div className="user-profile">
                     <div
                       className={`profile-pic-${
@@ -107,7 +146,7 @@ function RightChat({ logo, socket, username, userid, room, color }) {
                         localStorage.getItem("key") === messageContent.userid
                           ? "right"
                           : "left"
-                      }`}
+                        }`}
                       style={{ backgroundColor: messageContent.color }}>
                       {" "}
                       <i className="fa-solid fa-user-secret"></i>
@@ -162,11 +201,16 @@ function RightChat({ logo, socket, username, userid, room, color }) {
                 event.key === "Enter" && sendMessage();
               }}
             />
+            <i className="fa fa-smile" id="emoji" onClick={handleEmoji} ></i>
+
             <button onClick={sendMessage}>
               <i className="fa fa-paper-plane"></i> Send
             </button>
           </div>
         </div>
+        {showemoji && <div style={{ width: "100%", height: "50%" }}>
+          <Picker style={{ width: "100%" }} onEmojiClick={onEmojiClick} />
+        </div>}
       </div>
     </>
   );

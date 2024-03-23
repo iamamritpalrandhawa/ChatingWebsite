@@ -6,7 +6,7 @@ function SongSearchResult({ songName }) {
   useEffect(() => {
     // Make API call to search for the song using the `songName`
     fetch(
-      `https://sound-scribe.vercel.app/name/${encodeURIComponent(songName)}`
+      `https://sound-scribe.vercel.app/songs/name/${encodeURIComponent(songName)}`
     )
       .then((response) => response.json())
       .then((data) => setSearchResults(data))
