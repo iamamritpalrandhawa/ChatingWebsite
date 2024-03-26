@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 // import SocketState from "./Context/Socket/SocketState";
 
-const socket = io.connect("https://7eda-108-181-201-215.ngrok-free.app/");
+const socket = io.connect("https://7eda-108-181-201-215.ngrok-free.app/", {});
 // const socket = io.connect("https://boting-chat-4bac28e35f1f.herokuapp.com/");
 
 function App() {
