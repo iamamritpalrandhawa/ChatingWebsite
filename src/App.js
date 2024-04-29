@@ -14,7 +14,7 @@ import { useEffect } from "react";
 
 // import SocketState from "./Context/Socket/SocketState";
 
-const socket = io.connect("https://7eda-108-181-201-215.ngrok-free.app/", {
+const socket = io.connect("https://d920-108-181-201-215.ngrok-free.app/", {
     extraHeaders: {
       "connection": "upgrade",
       "ngrok-skip-browser-warning": "001",
